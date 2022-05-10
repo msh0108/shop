@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Button, Navbar, Container, Nav, Row, Col } from 'react-bootstrap';
 import {useParams} from 'react-router-dom'
 import styled from 'styled-components'
@@ -14,6 +15,16 @@ let YellowBtn = styled.button`
 
 function Detail(props) {
 
+  useEffect(()=>{
+    setTimeout(()=>{}, 2000)
+  })
+
+  setTimeout(()=>{}, 1000)
+
+  let [count, setCount] = useState(0)
+
+  let [alert, setalert] = useState(true)
+
   let {id} = useParams();
 
   let 찾은상품 = props.shoes.find(function(x){
@@ -23,6 +34,14 @@ function Detail(props) {
     return (
       <>
       <Container>
+        {
+          alert == true
+          ? <div className='alert alert-warning'>
+          2초이내 구매시 할인
+        </div>
+        : null
+        }
+        
           <YellowBtn bg='blue'>버튼</YellowBtn>
           <YellowBtn bg='orange'>버튼</YellowBtn>
         <Row>
